@@ -1,5 +1,7 @@
 package br.com.zup.edu.nossositedeviagens.modelo;
 
+import br.com.zup.edu.nossositedeviagens.annotation.UniqueValue;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -11,7 +13,7 @@ public class Companhia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank @UniqueValue(domainClass = Companhia.class, fieldName = "nome")
     private String nome;
 
     private LocalDateTime instanteCriacao = LocalDateTime.now();
@@ -23,5 +25,9 @@ public class Companhia {
     public Companhia(String nome, Pais pais) {
         this.nome = nome;
         this.pais = pais;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
