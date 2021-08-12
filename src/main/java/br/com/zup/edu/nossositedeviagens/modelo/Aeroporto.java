@@ -24,4 +24,8 @@ public class Aeroporto {
     @Deprecated
     public Aeroporto() {
     }
+
+    public Long getId() {
+        return id;
+    }
 }

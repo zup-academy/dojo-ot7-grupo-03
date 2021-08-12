@@ -4,6 +4,7 @@ import br.com.zup.edu.nossositedeviagens.annotation.ExistsId;
 import br.com.zup.edu.nossositedeviagens.annotation.UniqueValue;
 import br.com.zup.edu.nossositedeviagens.modelo.Aeroporto;
 import br.com.zup.edu.nossositedeviagens.modelo.Pais;
+import br.com.zup.edu.nossositedeviagens.repositorio.PaisRepository;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,5 +21,10 @@ public class AeroportoForm {
     public AeroportoForm(String nome, Long paisId) {
         this.nome = nome;
         this.paisId = paisId;
+    }
+
+    public Aeroporto toModel(PaisRepository paisRepository) {
+        Pais pais = paisRepository.getById(paisId);
+        return new Aeroporto(nome, pais);
     }
 }
