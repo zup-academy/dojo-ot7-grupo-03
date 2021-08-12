@@ -38,4 +38,8 @@ public class Rota {
         this.destino = destino;
         this.duracao = duracao;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
